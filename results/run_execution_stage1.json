@@ -1,0 +1,10 @@
+{
+  "command": "rtk proxy .venv/bin/inspect eval office_bench/task.py --model deepseek/deepseek-flash --model-base-url https://api.deepseek.com --epochs 3 --no-epochs-reducer --max-retries 0 --retry-on-error 0 --fail-on-error 0 --timeout 60 --max-connections 1 --max-samples 1 --log-dir results/logs --log-format eval --no-log-model-api --display plain",
+  "cwd": "/Users/x/office-agent-bench",
+  "started_at": "2026-10-13T20:43:55.368834+08:00",
+  "completed_at": "2026-10-13T20:44:54.962138+08:00",
+  "elapsed_seconds": 59.59309049999865,
+  "returncode": 0,
+  "sha_before": "7e1c1edb039fa9d28894c747834196d64dfa29da797bfccec3e54c53117c7215",
+  "sha_after": "7e1c1edb039fa9d28894c747834196d64dfa29da797bfccec3e54c53117c7215"
+}

@@ -1,0 +1,36 @@
+Monitor from another shell: inspect ctl task list   (inspect ctl --help)
+Running 1 tasks...
+---------------------------------------------------------                       
+office_bench (8 x 3 samples): deepseek/deepseek-flash                           
+max_retries: 0, timeout: 60, max_connections: 1, epochs: 3, epochs_reducer:     
+none, max_samples: 1, log_model_api: False, dataset: tasks                      
+---------------------------------------------------------                       
+                                                                                
+generate     | Steps:   2/24   8% | Samples:   2/ 24 | accuracy: 1.00 | deepseek:  1/ 1 | HTTP retries: 0
+generate     | Steps:   4/24  16% | Samples:   4/ 24 | accuracy: 1.00 | deepseek:  1/ 1 | HTTP retries: 0
+generate     | Steps:   6/24  25% | Samples:   6/ 24 | accuracy: 1.00 | deepseek:  1/ 1 | HTTP retries: 0
+generate     | Steps:   8/24  33% | Samples:   8/ 24 | accuracy: 1.00 | deepseek:  1/ 1 | HTTP retries: 0
+generate     | Steps:  10/24  41% | Samples:  10/ 24 | accuracy: 1.00 | deepseek:  1/ 1 | HTTP retries: 0
+generate     | Steps:  13/24  54% | Samples:  13/ 24 | accuracy: 1.00 | deepseek:  1/ 1 | HTTP retries: 0
+generate     | Steps:  15/24  62% | Samples:  15/ 24 | accuracy: 1.00 | deepseek:  1/ 1 | HTTP retries: 0
+generate     | Steps:  17/24  70% | Samples:  17/ 24 | accuracy: 1.00 | deepseek:  1/ 1 | HTTP retries: 0
+generate     | Steps:  19/24  79% | Samples:  19/ 24 | accuracy: 1.00 | deepseek:  1/ 1 | HTTP retries: 0
+generate     | Steps:  21/24  87% | Samples:  21/ 24 | accuracy: 1.00 | deepseek:  1/ 1 | HTTP retries: 0
+generate     | Steps:  23/24  95% | Samples:  23/ 24 | accuracy: 1.00 | deepseek:  1/ 1 | HTTP retries: 0
+generate     | Steps:  24/24 100% | Samples:  24/ 24 | accuracy: 1.00 | deepseek:  0/ 1 | HTTP retries: 0
+
+---------------------------------------------------------                       
+office_bench (8 x 3 samples): deepseek/deepseek-flash                           
+max_retries: 0, timeout: 60, max_connections: 1, epochs: 3, epochs_reducer:     
+none, max_samples: 1, log_model_api: False, dataset: tasks                      
+                                                                                
+total time:              0:00:57                                                
+deepseek/deepseek-flash  15,119 tokens [I: 4,448, CW: 0, CR: 2,560, O: 8,111, R:
+                       6,980]                                                   
+office_scorer                                                                   
+accuracy       1.000                                                            
+stderr         0.000                                                            
+Log:                                                                            
+results/logs/2026-10-13T12-43-57-00-00_office-bench_MvoRpVQKoEnCfdUebzPJ2H.eval 
+---------------------------------------------------------                       
+                                                                                
