@@ -1,0 +1,859 @@
+L2 变异测试原始证据（2026-10-14，Asia/Shanghai）
+工作目录：/Users/x/office-agent-bench
+开工未跟踪文件是前两轮已知文档；以下原样保存命令输出，退出码另列。
+no-index numstat 的退出码 1 表示有新增内容；生成器 RED 为预定的设施验证。
+
+$ rtk proxy git status --short --untracked-files=all
+?? AGENTS.md
+?? docs/PROJECT_SPEC.md
+?? docs/data_manifest.md
+?? docs/review_stage1_all.md
+?? docs/stage1_readiness.md
+?? docs/stage1_readiness_evidence_2026-10-14.txt
+[exit_code=0]
+
+$ rtk proxy git log --oneline -5
+c53b970 docs: propose stage2 families checks and sandbox design
+68b83a3 feat: audit and reproduce stage1 archives with numeric scores
+cbd1549 docs: clarify chat was a typo and flash was used throughout
+4a9f60e docs: append post-run DeepSeek model identity clarification
+1f74e97 第一阶段首次运行：24 次结果与汇总（未解读）
+[exit_code=0]
+
+$ rtk proxy shasum -a 256 data/tasks.jsonl
+7e1c1edb039fa9d28894c747834196d64dfa29da797bfccec3e54c53117c7215  data/tasks.jsonl
+[exit_code=0]
+
+$ rtk proxy .venv/bin/python -B -m unittest discover -s tests -v
+test_D_extra_reason (test_edge_author.AuthorEdgeTests.test_D_extra_reason) ... ok
+test_N_status_with_spaces (test_edge_author.AuthorEdgeTests.test_N_status_with_spaces) ... ok
+test_O_fenced_invalid_json (test_edge_author.AuthorEdgeTests.test_O_fenced_invalid_json) ... ok
+test_P_uppercase_fence (test_edge_author.AuthorEdgeTests.test_P_uppercase_fence) ... ok
+test_example_B_string_null (test_edge_author.AuthorEdgeTests.test_example_B_string_null) ... ok
+test_changed_file_is_rejected (test_reproduce_stage1.ReproductionTests.test_changed_file_is_rejected) ... ok
+test_extra_gold_in_user_message_is_rejected (test_reproduce_stage1.ReproductionTests.test_extra_gold_in_user_message_is_rejected) ... ok
+test_numeric_and_archived_score_values (test_reproduce_stage1.ReproductionTests.test_numeric_and_archived_score_values) ... ok
+test_saved_score_disagrees_with_fresh_score_is_rejected (test_reproduce_stage1.ReproductionTests.test_saved_score_disagrees_with_fresh_score_is_rejected) ... ok
+test_unchanged_sample_passes (test_reproduce_stage1.ReproductionTests.test_unchanged_sample_passes) ... ok
+test_A_fenced_json (test_scorer.ScorerTests.test_A_fenced_json) ... ok
+test_B_string_null_owner (test_scorer.ScorerTests.test_B_string_null_owner) ... ok
+test_C_borrowed_owner (test_scorer.ScorerTests.test_C_borrowed_owner) ... ok
+test_D_extra_reason_claims_ok (test_scorer.ScorerTests.test_D_extra_reason_claims_ok) ... ok
+test_E_swapped_order (test_scorer.ScorerTests.test_E_swapped_order) ... ok
+test_F_chinese_deadline (test_scorer.ScorerTests.test_F_chinese_deadline) ... ok
+test_G_prefixed_json_is_only_diagnostic (test_scorer.ScorerTests.test_G_prefixed_json_is_only_diagnostic) ... ok
+test_H_missing_third_item (test_scorer.ScorerTests.test_H_missing_third_item) ... ok
+test_I_false_ok (test_scorer.ScorerTests.test_I_false_ok) ... ok
+test_J_cannot_complete_with_items (test_scorer.ScorerTests.test_J_cannot_complete_with_items) ... ok
+test_K_false_refusal (test_scorer.ScorerTests.test_K_false_refusal) ... ok
+test_L_numeric_owner (test_scorer.ScorerTests.test_L_numeric_owner) ... ok
+test_M_rewritten_task (test_scorer.ScorerTests.test_M_rewritten_task) ... ok
+test_rule_based_boundaries (test_scorer.ScorerTests.test_rule_based_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.015s
+
+OK
+[exit_code=0]
+
+$ rtk proxy .venv/bin/python -B -m unittest discover -s tests -p test_mutations.py -v
+test_M01 (test_mutations.MutationTests.test_M01)
+附录 C M01：逐题评分与作者预期一致。 ... ok
+test_M02 (test_mutations.MutationTests.test_M02)
+附录 C M02：逐题评分与作者预期一致。 ... ok
+test_M03 (test_mutations.MutationTests.test_M03)
+附录 C M03：逐题评分与作者预期一致。 ... ok
+test_M04 (test_mutations.MutationTests.test_M04)
+附录 C M04：逐题评分与作者预期一致。 ... ok
+test_M05 (test_mutations.MutationTests.test_M05)
+附录 C M05：逐题评分与作者预期一致。 ... ok
+test_M06 (test_mutations.MutationTests.test_M06)
+附录 C M06：逐题评分与作者预期一致。 ... ok
+test_M07 (test_mutations.MutationTests.test_M07)
+附录 C M07：逐题评分与作者预期一致。 ... ok
+test_M08 (test_mutations.MutationTests.test_M08)
+附录 C M08：逐题评分与作者预期一致。 ... ok
+test_M09 (test_mutations.MutationTests.test_M09)
+附录 C M09：逐题评分与作者预期一致。 ... ok
+test_M10 (test_mutations.MutationTests.test_M10)
+附录 C M10：逐题评分与作者预期一致。 ... ok
+test_M11 (test_mutations.MutationTests.test_M11)
+附录 C M11：逐题评分与作者预期一致。 ... ok
+test_M12 (test_mutations.MutationTests.test_M12)
+附录 C M12：逐题评分与作者预期一致。 ... ok
+test_M13 (test_mutations.MutationTests.test_M13)
+附录 C M13：逐题评分与作者预期一致。 ... ok
+test_M14 (test_mutations.MutationTests.test_M14)
+附录 C M14：逐题评分与作者预期一致。 ... ok
+test_M15 (test_mutations.MutationTests.test_M15)
+附录 C M15：逐题评分与作者预期一致。 ... ok
+test_M16 (test_mutations.MutationTests.test_M16)
+附录 C M16：逐题评分与作者预期一致。 ... ok
+test_M17 (test_mutations.MutationTests.test_M17)
+附录 C M17：逐题评分与作者预期一致。 ... ok
+test_M18 (test_mutations.MutationTests.test_M18)
+附录 C M18：逐题评分与作者预期一致。 ... ok
+test_M19 (test_mutations.MutationTests.test_M19)
+附录 C M19：逐题评分与作者预期一致。 ... ok
+test_M20 (test_mutations.MutationTests.test_M20)
+附录 C M20：逐题评分与作者预期一致。 ... ok
+test_M21 (test_mutations.MutationTests.test_M21)
+附录 C M21：逐题评分与作者预期一致。 ... ok
+test_M22 (test_mutations.MutationTests.test_M22)
+附录 C M22：逐题评分与作者预期一致。 ... ok
+test_M23 (test_mutations.MutationTests.test_M23)
+附录 C M23：逐题评分与作者预期一致。 ... ok
+test_M24 (test_mutations.MutationTests.test_M24)
+附录 C M24：逐题评分与作者预期一致。 ... ok
+test_M25 (test_mutations.MutationTests.test_M25)
+附录 C M25：逐题评分与作者预期一致。 ... ok
+test_M26 (test_mutations.MutationTests.test_M26)
+附录 C M26：逐题评分与作者预期一致。 ... ok
+test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) ... 
+  test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_001') ... FAIL
+  test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_002') ... FAIL
+  test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_003') ... FAIL
+  test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_004') ... FAIL
+  test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_005') ... FAIL
+  test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_006') ... FAIL
+  test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_007') ... FAIL
+  test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_008') ... FAIL
+test_generator_preserves_frozen_answers (test_mutations.MutationTests.test_generator_preserves_frozen_answers) ... ok
+
+======================================================================
+FAIL: test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_001')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/x/office-agent-bench/tests/test_mutations.py", line 78, in test_generator_covers_every_author_mutation
+    self.assertEqual({case.code for case in cases}, set(EXPECTED))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the second set but not the first:
+'M16'
+'M15'
+'M02'
+'M03'
+'M19'
+'M09'
+'M14'
+'M22'
+'M13'
+'M06'
+'M20'
+'M10'
+'M25'
+'M08'
+'M07'
+'M21'
+'M17'
+'M23'
+'M04'
+'M01'
+'M11'
+'M05'
+'M18'
+'M12'
+'M26'
+'M24'
+
+======================================================================
+FAIL: test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_002')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/x/office-agent-bench/tests/test_mutations.py", line 78, in test_generator_covers_every_author_mutation
+    self.assertEqual({case.code for case in cases}, set(EXPECTED))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the second set but not the first:
+'M16'
+'M15'
+'M02'
+'M03'
+'M19'
+'M09'
+'M14'
+'M22'
+'M13'
+'M06'
+'M20'
+'M10'
+'M25'
+'M08'
+'M07'
+'M21'
+'M17'
+'M23'
+'M04'
+'M01'
+'M11'
+'M05'
+'M18'
+'M12'
+'M26'
+'M24'
+
+======================================================================
+FAIL: test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_003')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/x/office-agent-bench/tests/test_mutations.py", line 78, in test_generator_covers_every_author_mutation
+    self.assertEqual({case.code for case in cases}, set(EXPECTED))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the second set but not the first:
+'M16'
+'M15'
+'M02'
+'M03'
+'M19'
+'M09'
+'M14'
+'M22'
+'M13'
+'M06'
+'M20'
+'M10'
+'M25'
+'M08'
+'M07'
+'M21'
+'M17'
+'M23'
+'M04'
+'M01'
+'M11'
+'M05'
+'M18'
+'M12'
+'M26'
+'M24'
+
+======================================================================
+FAIL: test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_004')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/x/office-agent-bench/tests/test_mutations.py", line 78, in test_generator_covers_every_author_mutation
+    self.assertEqual({case.code for case in cases}, set(EXPECTED))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the second set but not the first:
+'M16'
+'M15'
+'M02'
+'M03'
+'M19'
+'M09'
+'M14'
+'M22'
+'M13'
+'M06'
+'M20'
+'M10'
+'M25'
+'M08'
+'M07'
+'M21'
+'M17'
+'M23'
+'M04'
+'M01'
+'M11'
+'M05'
+'M18'
+'M12'
+'M26'
+'M24'
+
+======================================================================
+FAIL: test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_005')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/x/office-agent-bench/tests/test_mutations.py", line 78, in test_generator_covers_every_author_mutation
+    self.assertEqual({case.code for case in cases}, set(EXPECTED))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the second set but not the first:
+'M16'
+'M15'
+'M02'
+'M03'
+'M19'
+'M09'
+'M14'
+'M22'
+'M13'
+'M06'
+'M20'
+'M10'
+'M25'
+'M08'
+'M07'
+'M21'
+'M17'
+'M23'
+'M04'
+'M01'
+'M11'
+'M05'
+'M18'
+'M12'
+'M26'
+'M24'
+
+======================================================================
+FAIL: test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_006')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/x/office-agent-bench/tests/test_mutations.py", line 78, in test_generator_covers_every_author_mutation
+    self.assertEqual({case.code for case in cases}, set(EXPECTED))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the second set but not the first:
+'M16'
+'M15'
+'M02'
+'M03'
+'M19'
+'M09'
+'M14'
+'M22'
+'M13'
+'M06'
+'M20'
+'M10'
+'M25'
+'M08'
+'M07'
+'M21'
+'M17'
+'M23'
+'M04'
+'M01'
+'M11'
+'M05'
+'M18'
+'M12'
+'M26'
+'M24'
+
+======================================================================
+FAIL: test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_007')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/x/office-agent-bench/tests/test_mutations.py", line 78, in test_generator_covers_every_author_mutation
+    self.assertEqual({case.code for case in cases}, set(EXPECTED))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the second set but not the first:
+'M16'
+'M15'
+'M02'
+'M03'
+'M19'
+'M09'
+'M14'
+'M22'
+'M13'
+'M06'
+'M20'
+'M10'
+'M25'
+'M08'
+'M07'
+'M21'
+'M17'
+'M23'
+'M04'
+'M01'
+'M11'
+'M05'
+'M18'
+'M12'
+'M26'
+'M24'
+
+======================================================================
+FAIL: test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) (task='office_008')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/x/office-agent-bench/tests/test_mutations.py", line 78, in test_generator_covers_every_author_mutation
+    self.assertEqual({case.code for case in cases}, set(EXPECTED))
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Items in the second set but not the first:
+'M16'
+'M15'
+'M02'
+'M03'
+'M19'
+'M09'
+'M14'
+'M22'
+'M13'
+'M06'
+'M20'
+'M10'
+'M25'
+'M08'
+'M07'
+'M21'
+'M17'
+'M23'
+'M04'
+'M01'
+'M11'
+'M05'
+'M18'
+'M12'
+'M26'
+'M24'
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.002s
+
+FAILED (failures=8)
+[exit_code=1]
+
+$ rtk proxy .venv/bin/python -B -m unittest discover -s tests -p test_mutations.py -v
+test_M01 (test_mutations.MutationTests.test_M01)
+附录 C M01：逐题评分与作者预期一致。 ... ok
+test_M02 (test_mutations.MutationTests.test_M02)
+附录 C M02：逐题评分与作者预期一致。 ... ok
+test_M03 (test_mutations.MutationTests.test_M03)
+附录 C M03：逐题评分与作者预期一致。 ... ok
+test_M04 (test_mutations.MutationTests.test_M04)
+附录 C M04：逐题评分与作者预期一致。 ... 
+  test_M04 (test_mutations.MutationTests.test_M04) (task='office_001', mutation='M04', variant='default')
+附录 C M04：逐题评分与作者预期一致。 ... skipped 'items 少于 2 项'
+  test_M04 (test_mutations.MutationTests.test_M04) (task='office_005', mutation='M04', variant='default')
+附录 C M04：逐题评分与作者预期一致。 ... skipped 'items 少于 2 项'
+  test_M04 (test_mutations.MutationTests.test_M04) (task='office_006', mutation='M04', variant='default')
+附录 C M04：逐题评分与作者预期一致。 ... skipped 'items 少于 2 项'
+  test_M04 (test_mutations.MutationTests.test_M04) (task='office_007', mutation='M04', variant='default')
+附录 C M04：逐题评分与作者预期一致。 ... skipped 'items 少于 2 项'
+test_M05 (test_mutations.MutationTests.test_M05)
+附录 C M05：逐题评分与作者预期一致。 ... 
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_001', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_002', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_003', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_004', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_005', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_006', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_007', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+test_M06 (test_mutations.MutationTests.test_M06)
+附录 C M06：逐题评分与作者预期一致。 ... 
+  test_M06 (test_mutations.MutationTests.test_M06) (task='office_001', mutation='M06', variant='default')
+附录 C M06：逐题评分与作者预期一致。 ... skipped '没有有姓名的项，或原文没有另一个可替换人名'
+  test_M06 (test_mutations.MutationTests.test_M06) (task='office_007', mutation='M06', variant='default')
+附录 C M06：逐题评分与作者预期一致。 ... skipped '没有有姓名的项，或原文没有另一个可替换人名'
+test_M07 (test_mutations.MutationTests.test_M07)
+附录 C M07：逐题评分与作者预期一致。 ... 
+  test_M07 (test_mutations.MutationTests.test_M07) (task='office_007', mutation='M07', variant='default')
+附录 C M07：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M08 (test_mutations.MutationTests.test_M08)
+附录 C M08：逐题评分与作者预期一致。 ... 
+  test_M08 (test_mutations.MutationTests.test_M08) (task='office_007', mutation='M08', variant='default')
+附录 C M08：逐题评分与作者预期一致。 ... skipped '金标没有非 null 的 deadline'
+test_M09 (test_mutations.MutationTests.test_M09)
+附录 C M09：逐题评分与作者预期一致。 ... 
+  test_M09 (test_mutations.MutationTests.test_M09) (task='office_007', mutation='M09', variant='default')
+附录 C M09：逐题评分与作者预期一致。 ... skipped '金标没有非 null 的 deadline'
+test_M10 (test_mutations.MutationTests.test_M10)
+附录 C M10：逐题评分与作者预期一致。 ... 
+  test_M10 (test_mutations.MutationTests.test_M10) (task='office_007', mutation='M10', variant='default')
+附录 C M10：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M11 (test_mutations.MutationTests.test_M11)
+附录 C M11：逐题评分与作者预期一致。 ... 
+  test_M11 (test_mutations.MutationTests.test_M11) (task='office_007', mutation='M11', variant='default')
+附录 C M11：逐题评分与作者预期一致。 ... skipped '金标 cannot_complete，按附录 C 转由 M18 覆盖'
+test_M12 (test_mutations.MutationTests.test_M12)
+附录 C M12：逐题评分与作者预期一致。 ... 
+  test_M12 (test_mutations.MutationTests.test_M12) (task='office_007', mutation='M12', variant='default')
+附录 C M12：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M13 (test_mutations.MutationTests.test_M13)
+附录 C M13：逐题评分与作者预期一致。 ... 
+  test_M13 (test_mutations.MutationTests.test_M13) (task='office_007', mutation='M13', variant='default')
+附录 C M13：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M14 (test_mutations.MutationTests.test_M14)
+附录 C M14：逐题评分与作者预期一致。 ... ok
+test_M15 (test_mutations.MutationTests.test_M15)
+附录 C M15：逐题评分与作者预期一致。 ... ok
+test_M16 (test_mutations.MutationTests.test_M16)
+附录 C M16：逐题评分与作者预期一致。 ... ok
+test_M17 (test_mutations.MutationTests.test_M17)
+附录 C M17：逐题评分与作者预期一致。 ... 
+  test_M17 (test_mutations.MutationTests.test_M17) (task='office_007', mutation='M17', variant='default')
+附录 C M17：逐题评分与作者预期一致。 ... skipped 'feasible=false'
+test_M18 (test_mutations.MutationTests.test_M18)
+附录 C M18：逐题评分与作者预期一致。 ... 
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_001', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_002', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_003', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_004', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_005', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_006', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_008', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+test_M19 (test_mutations.MutationTests.test_M19)
+附录 C M19：逐题评分与作者预期一致。 ... 
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_001', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_002', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_003', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_004', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_005', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_006', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_008', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+test_M20 (test_mutations.MutationTests.test_M20)
+附录 C M20：逐题评分与作者预期一致。 ... ok
+test_M21 (test_mutations.MutationTests.test_M21)
+附录 C M21：逐题评分与作者预期一致。 ... 
+  test_M21 (test_mutations.MutationTests.test_M21) (task='office_007', mutation='M21', variant='default')
+附录 C M21：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M22 (test_mutations.MutationTests.test_M22)
+附录 C M22：逐题评分与作者预期一致。 ... 
+  test_M22 (test_mutations.MutationTests.test_M22) (task='office_007', mutation='M22', variant='default')
+附录 C M22：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M23 (test_mutations.MutationTests.test_M23)
+附录 C M23：逐题评分与作者预期一致。 ... ok
+test_M24 (test_mutations.MutationTests.test_M24)
+附录 C M24：逐题评分与作者预期一致。 ... ok
+test_M25 (test_mutations.MutationTests.test_M25)
+附录 C M25：逐题评分与作者预期一致。 ... ok
+test_M26 (test_mutations.MutationTests.test_M26)
+附录 C M26：逐题评分与作者预期一致。 ... 
+  test_M26 (test_mutations.MutationTests.test_M26) (task='office_007', mutation='M26', variant='default')
+附录 C M26：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) ... ok
+test_generator_preserves_frozen_answers (test_mutations.MutationTests.test_generator_preserves_frozen_answers) ... ok
+
+----------------------------------------------------------------------
+Ran 28 tests in 0.023s
+
+OK (skipped=38)
+[exit_code=0]
+
+$ rtk proxy .venv/bin/python -B -m unittest discover -s tests -v
+test_D_extra_reason (test_edge_author.AuthorEdgeTests.test_D_extra_reason) ... ok
+test_N_status_with_spaces (test_edge_author.AuthorEdgeTests.test_N_status_with_spaces) ... ok
+test_O_fenced_invalid_json (test_edge_author.AuthorEdgeTests.test_O_fenced_invalid_json) ... ok
+test_P_uppercase_fence (test_edge_author.AuthorEdgeTests.test_P_uppercase_fence) ... ok
+test_example_B_string_null (test_edge_author.AuthorEdgeTests.test_example_B_string_null) ... ok
+test_M01 (test_mutations.MutationTests.test_M01)
+附录 C M01：逐题评分与作者预期一致。 ... ok
+test_M02 (test_mutations.MutationTests.test_M02)
+附录 C M02：逐题评分与作者预期一致。 ... ok
+test_M03 (test_mutations.MutationTests.test_M03)
+附录 C M03：逐题评分与作者预期一致。 ... ok
+test_M04 (test_mutations.MutationTests.test_M04)
+附录 C M04：逐题评分与作者预期一致。 ... 
+  test_M04 (test_mutations.MutationTests.test_M04) (task='office_001', mutation='M04', variant='default')
+附录 C M04：逐题评分与作者预期一致。 ... skipped 'items 少于 2 项'
+  test_M04 (test_mutations.MutationTests.test_M04) (task='office_005', mutation='M04', variant='default')
+附录 C M04：逐题评分与作者预期一致。 ... skipped 'items 少于 2 项'
+  test_M04 (test_mutations.MutationTests.test_M04) (task='office_006', mutation='M04', variant='default')
+附录 C M04：逐题评分与作者预期一致。 ... skipped 'items 少于 2 项'
+  test_M04 (test_mutations.MutationTests.test_M04) (task='office_007', mutation='M04', variant='default')
+附录 C M04：逐题评分与作者预期一致。 ... skipped 'items 少于 2 项'
+test_M05 (test_mutations.MutationTests.test_M05)
+附录 C M05：逐题评分与作者预期一致。 ... 
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_001', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_002', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_003', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_004', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_005', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_006', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+  test_M05 (test_mutations.MutationTests.test_M05) (task='office_007', mutation='M05', variant='default')
+附录 C M05：逐题评分与作者预期一致。 ... skipped '金标没有 owner=null 的项'
+test_M06 (test_mutations.MutationTests.test_M06)
+附录 C M06：逐题评分与作者预期一致。 ... 
+  test_M06 (test_mutations.MutationTests.test_M06) (task='office_001', mutation='M06', variant='default')
+附录 C M06：逐题评分与作者预期一致。 ... skipped '没有有姓名的项，或原文没有另一个可替换人名'
+  test_M06 (test_mutations.MutationTests.test_M06) (task='office_007', mutation='M06', variant='default')
+附录 C M06：逐题评分与作者预期一致。 ... skipped '没有有姓名的项，或原文没有另一个可替换人名'
+test_M07 (test_mutations.MutationTests.test_M07)
+附录 C M07：逐题评分与作者预期一致。 ... 
+  test_M07 (test_mutations.MutationTests.test_M07) (task='office_007', mutation='M07', variant='default')
+附录 C M07：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M08 (test_mutations.MutationTests.test_M08)
+附录 C M08：逐题评分与作者预期一致。 ... 
+  test_M08 (test_mutations.MutationTests.test_M08) (task='office_007', mutation='M08', variant='default')
+附录 C M08：逐题评分与作者预期一致。 ... skipped '金标没有非 null 的 deadline'
+test_M09 (test_mutations.MutationTests.test_M09)
+附录 C M09：逐题评分与作者预期一致。 ... 
+  test_M09 (test_mutations.MutationTests.test_M09) (task='office_007', mutation='M09', variant='default')
+附录 C M09：逐题评分与作者预期一致。 ... skipped '金标没有非 null 的 deadline'
+test_M10 (test_mutations.MutationTests.test_M10)
+附录 C M10：逐题评分与作者预期一致。 ... 
+  test_M10 (test_mutations.MutationTests.test_M10) (task='office_007', mutation='M10', variant='default')
+附录 C M10：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M11 (test_mutations.MutationTests.test_M11)
+附录 C M11：逐题评分与作者预期一致。 ... 
+  test_M11 (test_mutations.MutationTests.test_M11) (task='office_007', mutation='M11', variant='default')
+附录 C M11：逐题评分与作者预期一致。 ... skipped '金标 cannot_complete，按附录 C 转由 M18 覆盖'
+test_M12 (test_mutations.MutationTests.test_M12)
+附录 C M12：逐题评分与作者预期一致。 ... 
+  test_M12 (test_mutations.MutationTests.test_M12) (task='office_007', mutation='M12', variant='default')
+附录 C M12：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M13 (test_mutations.MutationTests.test_M13)
+附录 C M13：逐题评分与作者预期一致。 ... 
+  test_M13 (test_mutations.MutationTests.test_M13) (task='office_007', mutation='M13', variant='default')
+附录 C M13：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M14 (test_mutations.MutationTests.test_M14)
+附录 C M14：逐题评分与作者预期一致。 ... ok
+test_M15 (test_mutations.MutationTests.test_M15)
+附录 C M15：逐题评分与作者预期一致。 ... ok
+test_M16 (test_mutations.MutationTests.test_M16)
+附录 C M16：逐题评分与作者预期一致。 ... ok
+test_M17 (test_mutations.MutationTests.test_M17)
+附录 C M17：逐题评分与作者预期一致。 ... 
+  test_M17 (test_mutations.MutationTests.test_M17) (task='office_007', mutation='M17', variant='default')
+附录 C M17：逐题评分与作者预期一致。 ... skipped 'feasible=false'
+test_M18 (test_mutations.MutationTests.test_M18)
+附录 C M18：逐题评分与作者预期一致。 ... 
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_001', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_002', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_003', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_004', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_005', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_006', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M18 (test_mutations.MutationTests.test_M18) (task='office_008', mutation='M18', variant='default')
+附录 C M18：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+test_M19 (test_mutations.MutationTests.test_M19)
+附录 C M19：逐题评分与作者预期一致。 ... 
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_001', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_002', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_003', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_004', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_005', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_006', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+  test_M19 (test_mutations.MutationTests.test_M19) (task='office_008', mutation='M19', variant='default')
+附录 C M19：逐题评分与作者预期一致。 ... skipped 'feasible=true'
+test_M20 (test_mutations.MutationTests.test_M20)
+附录 C M20：逐题评分与作者预期一致。 ... ok
+test_M21 (test_mutations.MutationTests.test_M21)
+附录 C M21：逐题评分与作者预期一致。 ... 
+  test_M21 (test_mutations.MutationTests.test_M21) (task='office_007', mutation='M21', variant='default')
+附录 C M21：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M22 (test_mutations.MutationTests.test_M22)
+附录 C M22：逐题评分与作者预期一致。 ... 
+  test_M22 (test_mutations.MutationTests.test_M22) (task='office_007', mutation='M22', variant='default')
+附录 C M22：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_M23 (test_mutations.MutationTests.test_M23)
+附录 C M23：逐题评分与作者预期一致。 ... ok
+test_M24 (test_mutations.MutationTests.test_M24)
+附录 C M24：逐题评分与作者预期一致。 ... ok
+test_M25 (test_mutations.MutationTests.test_M25)
+附录 C M25：逐题评分与作者预期一致。 ... ok
+test_M26 (test_mutations.MutationTests.test_M26)
+附录 C M26：逐题评分与作者预期一致。 ... 
+  test_M26 (test_mutations.MutationTests.test_M26) (task='office_007', mutation='M26', variant='default')
+附录 C M26：逐题评分与作者预期一致。 ... skipped 'items 为空'
+test_generator_covers_every_author_mutation (test_mutations.MutationTests.test_generator_covers_every_author_mutation) ... ok
+test_generator_preserves_frozen_answers (test_mutations.MutationTests.test_generator_preserves_frozen_answers) ... ok
+test_changed_file_is_rejected (test_reproduce_stage1.ReproductionTests.test_changed_file_is_rejected) ... ok
+test_extra_gold_in_user_message_is_rejected (test_reproduce_stage1.ReproductionTests.test_extra_gold_in_user_message_is_rejected) ... ok
+test_numeric_and_archived_score_values (test_reproduce_stage1.ReproductionTests.test_numeric_and_archived_score_values) ... ok
+test_saved_score_disagrees_with_fresh_score_is_rejected (test_reproduce_stage1.ReproductionTests.test_saved_score_disagrees_with_fresh_score_is_rejected) ... ok
+test_unchanged_sample_passes (test_reproduce_stage1.ReproductionTests.test_unchanged_sample_passes) ... ok
+test_A_fenced_json (test_scorer.ScorerTests.test_A_fenced_json) ... ok
+test_B_string_null_owner (test_scorer.ScorerTests.test_B_string_null_owner) ... ok
+test_C_borrowed_owner (test_scorer.ScorerTests.test_C_borrowed_owner) ... ok
+test_D_extra_reason_claims_ok (test_scorer.ScorerTests.test_D_extra_reason_claims_ok) ... ok
+test_E_swapped_order (test_scorer.ScorerTests.test_E_swapped_order) ... ok
+test_F_chinese_deadline (test_scorer.ScorerTests.test_F_chinese_deadline) ... ok
+test_G_prefixed_json_is_only_diagnostic (test_scorer.ScorerTests.test_G_prefixed_json_is_only_diagnostic) ... ok
+test_H_missing_third_item (test_scorer.ScorerTests.test_H_missing_third_item) ... ok
+test_I_false_ok (test_scorer.ScorerTests.test_I_false_ok) ... ok
+test_J_cannot_complete_with_items (test_scorer.ScorerTests.test_J_cannot_complete_with_items) ... ok
+test_K_false_refusal (test_scorer.ScorerTests.test_K_false_refusal) ... ok
+test_L_numeric_owner (test_scorer.ScorerTests.test_L_numeric_owner) ... ok
+test_M_rewritten_task (test_scorer.ScorerTests.test_M_rewritten_task) ... ok
+test_rule_based_boundaries (test_scorer.ScorerTests.test_rule_based_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 52 tests in 0.039s
+
+OK (skipped=38)
+[exit_code=0]
+
+$ rtk proxy .venv/bin/python -B - <<'PY'
+import json,runpy
+from pathlib import Path
+from collections import Counter
+ns=runpy.run_path('tests/test_mutations.py')
+records=list(map(json.loads,Path('data/tasks.jsonl').read_text().splitlines()))
+executed=Counter(); skipped=Counter(); details=[]
+for record in records:
+    cases=ns['generate_mutations'](record)
+    for case in cases:
+        (skipped if case.skip_reason else executed)[case.code]+=1
+        if case.skip_reason:
+            details.append(f'{record["id"]} {case.code}/{case.variant}: {case.skip_reason}')
+print('mutation executed skipped')
+for code in ns['EXPECTED']:
+    print(code,executed[code],skipped[code])
+print('TOTAL',sum(executed.values()),sum(skipped.values()))
+print('SKIP DETAILS')
+for detail in details: print(detail)
+PY
+mutation executed skipped
+M01 8 0
+M02 8 0
+M03 8 0
+M04 4 4
+M05 1 7
+M06 6 2
+M07 7 1
+M08 7 1
+M09 7 1
+M10 7 1
+M11 7 1
+M12 7 1
+M13 7 1
+M14 8 0
+M15 8 0
+M16 16 0
+M17 7 1
+M18 1 7
+M19 1 7
+M20 8 0
+M21 7 1
+M22 7 1
+M23 8 0
+M24 8 0
+M25 8 0
+M26 14 1
+TOTAL 185 38
+SKIP DETAILS
+office_001 M04/default: items 少于 2 项
+office_001 M05/default: 金标没有 owner=null 的项
+office_001 M06/default: 没有有姓名的项，或原文没有另一个可替换人名
+office_001 M18/default: feasible=true
+office_001 M19/default: feasible=true
+office_002 M05/default: 金标没有 owner=null 的项
+office_002 M18/default: feasible=true
+office_002 M19/default: feasible=true
+office_003 M05/default: 金标没有 owner=null 的项
+office_003 M18/default: feasible=true
+office_003 M19/default: feasible=true
+office_004 M05/default: 金标没有 owner=null 的项
+office_004 M18/default: feasible=true
+office_004 M19/default: feasible=true
+office_005 M04/default: items 少于 2 项
+office_005 M05/default: 金标没有 owner=null 的项
+office_005 M18/default: feasible=true
+office_005 M19/default: feasible=true
+office_006 M04/default: items 少于 2 项
+office_006 M05/default: 金标没有 owner=null 的项
+office_006 M18/default: feasible=true
+office_006 M19/default: feasible=true
+office_007 M04/default: items 少于 2 项
+office_007 M05/default: 金标没有 owner=null 的项
+office_007 M06/default: 没有有姓名的项，或原文没有另一个可替换人名
+office_007 M07/default: items 为空
+office_007 M08/default: 金标没有非 null 的 deadline
+office_007 M09/default: 金标没有非 null 的 deadline
+office_007 M10/default: items 为空
+office_007 M11/default: 金标 cannot_complete，按附录 C 转由 M18 覆盖
+office_007 M12/default: items 为空
+office_007 M13/default: items 为空
+office_007 M17/default: feasible=false
+office_007 M21/default: items 为空
+office_007 M22/default: items 为空
+office_007 M26/default: items 为空
+office_008 M18/default: feasible=true
+office_008 M19/default: feasible=true
+[exit_code=0]
+
+$ rtk proxy .venv/bin/python -B - <<'PY'
+import io,runpy,unittest
+ns=runpy.run_path('tests/test_mutations.py')
+cls=ns['MutationTests']
+context=cls.check_mutation.__globals__
+original=context['_evaluate_output']
+def incorrect_order_flag(raw,expected):
+    result=original(raw,expected)
+    if result['correct']:
+        result['order_violation']=True
+    return result
+context['_evaluate_output']=incorrect_order_flag
+try:
+    suite=unittest.TestSuite([cls('test_M01'),cls('test_M26')])
+    result=unittest.TextTestRunner(stream=io.StringIO()).run(suite)
+finally:
+    context['_evaluate_output']=original
+assert not result.errors
+assert len(result.failures)==22
+print('PASS: in-memory incorrect order_violation flag rejected in all 22 M01/M26 applicable cases')
+print('PASS: no scorer source or frozen file modified; this is harness sensitivity, not a production test failure')
+PY
+PASS: in-memory incorrect order_violation flag rejected in all 22 M01/M26 applicable cases
+PASS: no scorer source or frozen file modified; this is harness sensitivity, not a production test failure
+[exit_code=0]
+
+$ rtk proxy git status --short --untracked-files=all
+?? AGENTS.md
+?? docs/PROJECT_SPEC.md
+?? docs/data_manifest.md
+?? docs/l2_mutation_report.md
+?? docs/review_stage1_all.md
+?? docs/stage1_readiness.md
+?? docs/stage1_readiness_evidence_2026-10-14.txt
+?? tests/test_mutations.py
+[exit_code=0]
+
+$ rtk proxy git diff --numstat
+（原始输出为空）
+[exit_code=0]
+
+$ rtk proxy git diff --check
+（原始输出为空）
+[exit_code=0]
+
+$ rtk proxy shasum -a 256 data/tasks.jsonl
+7e1c1edb039fa9d28894c747834196d64dfa29da797bfccec3e54c53117c7215  data/tasks.jsonl
+[exit_code=0]
+
+$ rtk proxy git diff --no-index --numstat /dev/null tests/test_mutations.py
+236	0	/dev/null => tests/test_mutations.py
+[exit_code=1]
+
+$ rtk proxy git diff --no-index --numstat /dev/null docs/l2_mutation_report.md
+80	0	/dev/null => docs/l2_mutation_report.md
+[exit_code=1]
+
+$ rtk proxy git diff --no-index --check /dev/null tests/test_mutations.py
+（原始输出为空）
+[exit_code=1]
+
+

@@ -1,0 +1,225 @@
+第一阶段收尾核对原始证据（2026-10-14，Asia/Shanghai）
+工作目录：/Users/x/office-agent-bench
+本轮开工 status 为两份上一轮导入的文件：?? AGENTS.md、?? docs/PROJECT_SPEC.md，改动来源明确。
+以下保留关键核验及材料生成命令原始输出；空输出显式注明，退出码另列。
+
+$ rtk proxy env PYTHONDONTWRITEBYTECODE=1 .venv/bin/python -B scripts/reproduce_stage1.py --output-dir /private/tmp/office-agent-bench-stage1-audit-20261014
+test_D_extra_reason (test_edge_author.AuthorEdgeTests.test_D_extra_reason) ... ok
+test_N_status_with_spaces (test_edge_author.AuthorEdgeTests.test_N_status_with_spaces) ... ok
+test_O_fenced_invalid_json (test_edge_author.AuthorEdgeTests.test_O_fenced_invalid_json) ... ok
+test_P_uppercase_fence (test_edge_author.AuthorEdgeTests.test_P_uppercase_fence) ... ok
+test_example_B_string_null (test_edge_author.AuthorEdgeTests.test_example_B_string_null) ... ok
+test_changed_file_is_rejected (test_reproduce_stage1.ReproductionTests.test_changed_file_is_rejected) ... ok
+test_extra_gold_in_user_message_is_rejected (test_reproduce_stage1.ReproductionTests.test_extra_gold_in_user_message_is_rejected) ... ok
+test_numeric_and_archived_score_values (test_reproduce_stage1.ReproductionTests.test_numeric_and_archived_score_values) ... ok
+test_saved_score_disagrees_with_fresh_score_is_rejected (test_reproduce_stage1.ReproductionTests.test_saved_score_disagrees_with_fresh_score_is_rejected) ... ok
+test_unchanged_sample_passes (test_reproduce_stage1.ReproductionTests.test_unchanged_sample_passes) ... ok
+test_A_fenced_json (test_scorer.ScorerTests.test_A_fenced_json) ... ok
+test_B_string_null_owner (test_scorer.ScorerTests.test_B_string_null_owner) ... ok
+test_C_borrowed_owner (test_scorer.ScorerTests.test_C_borrowed_owner) ... ok
+test_D_extra_reason_claims_ok (test_scorer.ScorerTests.test_D_extra_reason_claims_ok) ... ok
+test_E_swapped_order (test_scorer.ScorerTests.test_E_swapped_order) ... ok
+test_F_chinese_deadline (test_scorer.ScorerTests.test_F_chinese_deadline) ... ok
+test_G_prefixed_json_is_only_diagnostic (test_scorer.ScorerTests.test_G_prefixed_json_is_only_diagnostic) ... ok
+test_H_missing_third_item (test_scorer.ScorerTests.test_H_missing_third_item) ... ok
+test_I_false_ok (test_scorer.ScorerTests.test_I_false_ok) ... ok
+test_J_cannot_complete_with_items (test_scorer.ScorerTests.test_J_cannot_complete_with_items) ... ok
+test_K_false_refusal (test_scorer.ScorerTests.test_K_false_refusal) ... ok
+test_L_numeric_owner (test_scorer.ScorerTests.test_L_numeric_owner) ... ok
+test_M_rewritten_task (test_scorer.ScorerTests.test_M_rewritten_task) ... ok
+test_rule_based_boundaries (test_scorer.ScorerTests.test_rule_based_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.014s
+
+OK
+PASS: 8 tasks; difficulty={'easy': 4, 'hard': 2, 'adversarial': 2}
+log status=success; rows=24; unique id×epoch=24; csv rows=24
+correct=24/24; total_tokens=15119; elapsed_seconds=57.000000
+/private/tmp/office-agent-bench-stage1-audit-20261014/stage1_runs.csv
+/private/tmp/office-agent-bench-stage1-audit-20261014/stage1_summary.md
+/private/tmp/office-agent-bench-stage1-audit-20261014/run_manifest_stage1.md
+PASS: 冻结任务、日志及运行凭证哈希、24 次输入、全部评分诊断字段、CSV 和汇总一致。
+首次运行代码状态：type='git' origin='https://github.com/Xxly959/office-agent-bench.git' commit='f6bf2ff' dirty=True
+注意：这是存档日志的离线复核；模型再次运行可能产生不同输出。
+[exit_code=0]
+
+$ rtk proxy git tag --list
+（原始输出为空）
+[exit_code=0]
+
+$ rtk proxy git diff a2c1c39 HEAD -- docs/predictions.md
+diff --git a/docs/predictions.md b/docs/predictions.md
+index b518a9e..05a1d68 100644
+--- a/docs/predictions.md
++++ b/docs/predictions.md
+@@ -42,3 +42,14 @@
+ - 失败是集中在内容上，还是集中在格式上？
+ 
+ 结果出来后的分析另起一个文件，不得回头修改本文件。
++
++## 五、模型名称笔误说明（运行后补记）
++
++- 追加日期：2026-10-14（Asia/Shanghai）；事实说明由 Codex 整理，待作者审阅。
++- 此节追加晚于 2026-10-13 的正式运行，不属于事前预测；上文保持原样。
++- 作者于 2026-10-14 明确说明：`chat` 是沿用旧名称造成的书写笔误，已改成 `flash`，实际使用的模型也是 `flash`。这不是换模型，也不是两模型对比实验。
++- 现有预测正文的待测模型为 `deepseek-flash`；正式日志记录 `deepseek/deepseek-flash`，二者一致。本项目未运行 `deepseek-chat`。
++
++`deepseek-chat` 是历史 API 名称，不能无日期地把它当成固定模型。官方变更记录显示：2025-12-01 时，它指向 V3.2 的非思考模式；2026-04-24 后过渡期指向 V4-Flash 的非思考模式，并宣布于 2026-07-24 停用。2026-09-10 发布 V4.1-Flash 后，官方使用 `deepseek-flash` 调用它。来源：[DeepSeek 官方变更记录](https://api-docs.deepseek.com/updates/)。
++
++模型名称与思考模式仍应分别记录。此次日志有 6,980 个 reasoning tokens，但没有显式固定 temperature、max_tokens 或 thinking 参数；不能事后补写成当时已经固定。官方当前接口支持 `thinking` 控制：[Chat Completions API](https://api-docs.deepseek.com/api/create-chat-completion/)。这些是运行配置的复现局限，不意味着本次换过模型。
+[exit_code=0]
+
+$ rtk proxy git log --format='%H %aI %s' -- data/tasks.jsonl tests/test_edge_author.py
+68b83a39929fc9fb16f68b4c245c1fe3fccaee3f 2026-10-14T11:53:59+08:00 feat: audit and reproduce stage1 archives with numeric scores
+f6bf2ff90d1f31eaa687d0cd5c8df8da621f441d 2026-10-13T20:39:28+08:00 评分器 v1：完整实现流程第 1-9 步，判例 A-M 测试
+6d26c33e104953882617fe888ff091e68719ef26 2026-10-13T16:11:29+08:00 冻结任务集：8 个任务（easy 4 / hard 2 / adversarial 2）
+[exit_code=0]
+
+$ rtk proxy .venv/bin/python -B - <<'PY'
+import hashlib,json,subprocess
+from collections import Counter
+from pathlib import Path
+from inspect_ai.log import read_eval_log
+records=[json.loads(line) for line in Path('data/tasks.jsonl').read_text().splitlines()]
+print('task_count:',len(records))
+print('difficulty:',dict(Counter(r['difficulty'] for r in records)))
+print('family:',dict(Counter(r['family'] for r in records)))
+print('feasible:',dict(Counter(r['feasible'] for r in records)))
+original=subprocess.check_output(['rtk','proxy','git','show','6d26c33:data/tasks.jsonl'])
+print('frozen_commit_sha256:',hashlib.sha256(original).hexdigest())
+base=subprocess.check_output(['rtk','proxy','git','show','a2c1c39:docs/predictions.md'])
+print('prediction_original_is_unchanged_prefix:',Path('docs/predictions.md').read_bytes().startswith(base))
+log=read_eval_log('results/logs/2026-10-13T12-43-57-00-00_office-bench_MvoRpVQKoEnCfdUebzPJ2H.eval')
+print('model:',log.eval.model)
+print('generate_config:',json.dumps({k:log.eval.model_generate_config.model_dump().get(k) for k in ('temperature','top_p','max_tokens','seed')},ensure_ascii=False))
+print('epochs:',log.eval.config.epochs)
+print('revision:',log.eval.revision)
+print('sample_count:',len(log.samples or []))
+print('log_files:',[p.name for p in Path('results/logs').glob('*.eval')])
+PY
+task_count: 8
+difficulty: {'easy': 4, 'hard': 2, 'adversarial': 2}
+family: {'action_item_extraction': 7, 'table_filtering': 1}
+feasible: {True: 7, False: 1}
+frozen_commit_sha256: 7e1c1edb039fa9d28894c747834196d64dfa29da797bfccec3e54c53117c7215
+prediction_original_is_unchanged_prefix: True
+model: deepseek/deepseek-flash
+generate_config: {"temperature": null, "top_p": null, "max_tokens": null, "seed": null}
+epochs: 3
+revision: type='git' origin='https://github.com/Xxly959/office-agent-bench.git' commit='f6bf2ff' dirty=True
+sample_count: 24
+log_files: ['2026-10-13T12-43-57-00-00_office-bench_MvoRpVQKoEnCfdUebzPJ2H.eval']
+[exit_code=0]
+
+$ rtk proxy git log --oneline -- tests/test_scorer.py docs/scorer_rules.md README.md
+68b83a3 feat: audit and reproduce stage1 archives with numeric scores
+f6bf2ff 评分器 v1：完整实现流程第 1-9 步，判例 A-M 测试
+868b2c2 实现评分器第1–5步并覆盖 v1.1 边界测试
+14ade9b 规则 v1.1：澄清 status 不 strip，补判例 N、O、P（不改 v1 原文）
+b7c0ab5 评分规则 v1：解析流程、规则表 R1-R13、判例 A-M、已知局限
+6d26c33 冻结任务集：8 个任务（easy 4 / hard 2 / adversarial 2）
+[exit_code=0]
+
+$ rtk proxy .venv/bin/python -B - <<'PY'
+import json
+from inspect_ai.log import read_eval_log
+log=read_eval_log('results/logs/2026-10-13T12-43-57-00-00_office-bench_MvoRpVQKoEnCfdUebzPJ2H.eval')
+config=log.eval.config.model_dump()
+print('cache_config_fields:',json.dumps({k:v for k,v in config.items() if 'cache' in k.lower()},ensure_ascii=False))
+print('generation_cache_fields:',json.dumps({k:v for k,v in log.eval.model_generate_config.model_dump().items() if 'cache' in k.lower()},ensure_ascii=False))
+print('distinct_outputs_by_task:',json.dumps({task:len({s.output.completion for s in log.samples if str(s.id)==task}) for task in sorted({str(s.id) for s in log.samples})},ensure_ascii=False))
+PY
+cache_config_fields: {}
+generation_cache_fields: {"cache_prompt": null, "cache": null}
+distinct_outputs_by_task: {"office_001": 1, "office_002": 1, "office_003": 1, "office_004": 1, "office_005": 1, "office_006": 1, "office_007": 1, "office_008": 1}
+[exit_code=0]
+
+$ rtk proxy .venv/bin/python -B - <<'PY'
+import json
+from pathlib import Path
+from inspect_ai.log import read_eval_log
+records={r['id']:r for r in map(json.loads,Path('data/tasks.jsonl').read_text().splitlines())}
+log=read_eval_log('results/logs/2026-10-13T12-43-57-00-00_office-bench_MvoRpVQKoEnCfdUebzPJ2H.eval')
+samples=sorted(log.samples,key=lambda s:(str(s.id),s.epoch))
+assert len(samples)==24 and len({(str(s.id),s.epoch) for s in samples})==24
+parts=['# 第一阶段全部样本作者独立复核材料\n\n整理日期：2026-10-14（Asia/Shanghai）。依据 PROJECT_SPEC 第 5.4 节：样本不多于 30 条时全部复核。本次覆盖 8 题 × 3 次，共 24 条。输入来自冻结任务集，模型输出从存档逐字摘录。\n\n作者判定、理由及分歧归因均待作者亲自填写。本文不声称盲态标注，也不替作者确认评分器。即使同题三次文本一致，也保留每次运行记录。请先依任务文档独立判断，再核对已有评分器记录。\n\n| 样本 | 作者判定（正确/错误） | 理由 | 与评分器是否一致 | 如有分歧的归因 |\n| --- | --- | --- | --- | --- |']
+for sample in samples:
+    parts.append(f'| {sample.id} / epoch {sample.epoch} | 待作者填写 | 待作者填写 | 待作者填写 | 待作者填写 |')
+parts.append('\n分歧归因按规范四类：评分器的问题、任务的问题、规则的漏洞、作者自己的误判。复核完成后填写：复核 __/24 条；分歧 __ 条。无分歧也如实记 0，不制造分歧。\n')
+for sample in samples:
+    record=records[str(sample.id)]
+    parts.append(f'## {sample.id} / epoch {sample.epoch}\n\n任务指令：\n\n{record["instruction"]}\n\n输入文档：\n\n```text\n{record["document"]}\n```\n\n模型最终输出（原文；无末尾换行时展示用换行不属于输出）：\n\n```text\n{sample.output.completion}\n```\n')
+path=Path('docs/review_stage1_all.md')
+with path.open('x',encoding='utf-8') as output:
+    output.write('\n'.join(parts)+'\n')
+print(f'created: {path}; samples=24; author_verdicts=pending')
+PY
+created: docs/review_stage1_all.md; samples=24; author_verdicts=pending
+[exit_code=0]
+
+$ rtk proxy git status --short --untracked-files=all
+?? AGENTS.md
+?? docs/PROJECT_SPEC.md
+?? docs/data_manifest.md
+?? docs/review_stage1_all.md
+?? docs/stage1_readiness.md
+[exit_code=0]
+
+$ rtk proxy git log --oneline -5
+c53b970 docs: propose stage2 families checks and sandbox design
+68b83a3 feat: audit and reproduce stage1 archives with numeric scores
+cbd1549 docs: clarify chat was a typo and flash was used throughout
+4a9f60e docs: append post-run DeepSeek model identity clarification
+1f74e97 第一阶段首次运行：24 次结果与汇总（未解读）
+[exit_code=0]
+
+$ rtk proxy shasum -a 256 data/tasks.jsonl
+7e1c1edb039fa9d28894c747834196d64dfa29da797bfccec3e54c53117c7215  data/tasks.jsonl
+[exit_code=0]
+
+$ rtk proxy git diff --numstat
+（原始输出为空）
+[exit_code=0]
+
+$ rtk proxy .venv/bin/python -B - <<'PY'
+import hashlib,json,re,subprocess
+from pathlib import Path
+from inspect_ai.log import read_eval_log
+manifest=Path('docs/data_manifest.md').read_text()
+checksum=hashlib.sha256(Path('data/tasks.jsonl').read_bytes()).hexdigest()
+assert checksum in manifest
+records=list(map(json.loads,Path('data/tasks.jsonl').read_text().splitlines()))
+assert len(records)==8
+text=Path('docs/review_stage1_all.md').read_text()
+log=read_eval_log('results/logs/2026-10-13T12-43-57-00-00_office-bench_MvoRpVQKoEnCfdUebzPJ2H.eval')
+assert len(re.findall(r'^## office_\d+ / epoch \d+$',text,re.M))==24
+for sample in log.samples:
+    section=text.split(f'## {sample.id} / epoch {sample.epoch}\n',1)[1].split('\n## ',1)[0]
+    assert '\n```text\n'+sample.output.completion+'\n```' in section
+    record=next(r for r in records if r['id']==str(sample.id))
+    assert record['instruction'] in section and record['document'] in section
+assert 'expected_answer' not in text
+assert text.count('| 待作者填写 | 待作者填写 | 待作者填写 | 待作者填写 |')==24
+assert subprocess.check_output(['rtk','proxy','git','diff','--name-only'])==b''
+print('PASS: manifest matches frozen SHA-256 and 8 records')
+print('PASS: review covers all 24 samples; task inputs and raw outputs match archives')
+print('PASS: all 24 author verdict rows remain pending; no expected_answer included')
+print('PASS: no tracked files modified')
+for name in ('AGENTS.md','docs/PROJECT_SPEC.md','docs/data_manifest.md','docs/stage1_readiness.md','docs/review_stage1_all.md'):
+    result=subprocess.run(['rtk','proxy','git','diff','--no-index','--numstat','/dev/null',name],text=True,capture_output=True)
+    assert result.returncode==1,result.stderr
+    print(result.stdout,end='')
+PY
+PASS: manifest matches frozen SHA-256 and 8 records
+PASS: review covers all 24 samples; task inputs and raw outputs match archives
+PASS: all 24 author verdict rows remain pending; no expected_answer included
+PASS: no tracked files modified
+31	0	/dev/null => AGENTS.md
+480	0	/dev/null => docs/PROJECT_SPEC.md
+20	0	/dev/null => docs/data_manifest.md
+62	0	/dev/null => docs/stage1_readiness.md
+557	0	/dev/null => docs/review_stage1_all.md
+[exit_code=0]
+
+
