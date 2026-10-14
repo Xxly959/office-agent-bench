@@ -7,7 +7,7 @@ from typing import Any
 from inspect_ai import Task, task
 from inspect_ai.dataset import Sample, json_dataset
 from inspect_ai.scorer import (
-    CORRECT, INCORRECT, Score, Scorer, Target, accuracy, scorer, stderr,
+    Score, Scorer, Target, accuracy, scorer, stderr,
 )
 from inspect_ai.solver import TaskState, generate
 
@@ -174,7 +174,7 @@ def office_scorer() -> Scorer:
     async def score(state: TaskState, target: Target) -> Score:
         metadata = _evaluate_output(state.output.completion, state.metadata["expected_answer"])
         return Score(
-            value=CORRECT if metadata["correct"] else INCORRECT,
+            value=1 if metadata["correct"] else 0,
             explanation="通过" if metadata["correct"] else ", ".join(metadata["failure_type"]),
             metadata=metadata,
         )

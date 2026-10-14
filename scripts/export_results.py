@@ -37,6 +37,15 @@ def local_time(value: str) -> str:
     return datetime.fromisoformat(value).astimezone(ZoneInfo("Asia/Shanghai")).isoformat()
 
 
+def normalize_score_value(value: object) -> bool:
+    """接受规则要求的 1/0，同时兼容首次存档日志的 C/I。"""
+    if value in (CORRECT, 1):
+        return True
+    if value in (INCORRECT, 0):
+        return False
+    raise ValueError(f"不是二值评分：{value!r}")
+
+
 def export(log_path: Path, execution_path: Path, output_dir: Path) -> None:
     if version("inspect-ai") != "0.3.278":
         raise ValueError("Inspect 版本必须为 0.3.278")
@@ -67,9 +76,7 @@ def export(log_path: Path, execution_path: Path, output_dir: Path) -> None:
             raise ValueError(f"样本 {sample.id}/{sample.epoch} 必须恰有一个评分")
         score = next(iter(sample.scores.values()))
         metadata = score.metadata or {}
-        if score.value not in (CORRECT, INCORRECT):
-            raise ValueError(f"样本 {sample.id}/{sample.epoch} 不是二值评分")
-        if metadata["correct"] != (score.value == CORRECT):
+        if metadata["correct"] != normalize_score_value(score.value):
             raise ValueError(f"样本 {sample.id}/{sample.epoch} value 与 correct 冲突")
         if metadata["false_completion"] != (metadata["claimed_ok"] and not metadata["correct"]):
             raise ValueError(f"样本 {sample.id}/{sample.epoch} false_completion 冲突")

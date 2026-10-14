@@ -4,3 +4,4 @@ references/
 logs/
 __pycache__/
 *.pyc
+results/reproduced_stage1/

@@ -1,0 +1,38 @@
+test_D_extra_reason (test_edge_author.AuthorEdgeTests.test_D_extra_reason) ... ok
+test_N_status_with_spaces (test_edge_author.AuthorEdgeTests.test_N_status_with_spaces) ... ok
+test_O_fenced_invalid_json (test_edge_author.AuthorEdgeTests.test_O_fenced_invalid_json) ... ok
+test_P_uppercase_fence (test_edge_author.AuthorEdgeTests.test_P_uppercase_fence) ... ok
+test_example_B_string_null (test_edge_author.AuthorEdgeTests.test_example_B_string_null) ... ok
+test_changed_file_is_rejected (test_reproduce_stage1.ReproductionTests.test_changed_file_is_rejected) ... ok
+test_extra_gold_in_user_message_is_rejected (test_reproduce_stage1.ReproductionTests.test_extra_gold_in_user_message_is_rejected) ... ok
+test_numeric_and_archived_score_values (test_reproduce_stage1.ReproductionTests.test_numeric_and_archived_score_values) ... ok
+test_saved_score_disagrees_with_fresh_score_is_rejected (test_reproduce_stage1.ReproductionTests.test_saved_score_disagrees_with_fresh_score_is_rejected) ... ok
+test_unchanged_sample_passes (test_reproduce_stage1.ReproductionTests.test_unchanged_sample_passes) ... ok
+test_A_fenced_json (test_scorer.ScorerTests.test_A_fenced_json) ... ok
+test_B_string_null_owner (test_scorer.ScorerTests.test_B_string_null_owner) ... ok
+test_C_borrowed_owner (test_scorer.ScorerTests.test_C_borrowed_owner) ... ok
+test_D_extra_reason_claims_ok (test_scorer.ScorerTests.test_D_extra_reason_claims_ok) ... ok
+test_E_swapped_order (test_scorer.ScorerTests.test_E_swapped_order) ... ok
+test_F_chinese_deadline (test_scorer.ScorerTests.test_F_chinese_deadline) ... ok
+test_G_prefixed_json_is_only_diagnostic (test_scorer.ScorerTests.test_G_prefixed_json_is_only_diagnostic) ... ok
+test_H_missing_third_item (test_scorer.ScorerTests.test_H_missing_third_item) ... ok
+test_I_false_ok (test_scorer.ScorerTests.test_I_false_ok) ... ok
+test_J_cannot_complete_with_items (test_scorer.ScorerTests.test_J_cannot_complete_with_items) ... ok
+test_K_false_refusal (test_scorer.ScorerTests.test_K_false_refusal) ... ok
+test_L_numeric_owner (test_scorer.ScorerTests.test_L_numeric_owner) ... ok
+test_M_rewritten_task (test_scorer.ScorerTests.test_M_rewritten_task) ... ok
+test_rule_based_boundaries (test_scorer.ScorerTests.test_rule_based_boundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 0.038s
+
+OK
+PASS: 8 tasks; difficulty={'easy': 4, 'hard': 2, 'adversarial': 2}
+log status=success; rows=24; unique id×epoch=24; csv rows=24
+correct=24/24; total_tokens=15119; elapsed_seconds=57.000000
+/Users/x/office-agent-bench/results/reproduced_stage1/stage1_runs.csv
+/Users/x/office-agent-bench/results/reproduced_stage1/stage1_summary.md
+/Users/x/office-agent-bench/results/reproduced_stage1/run_manifest_stage1.md
+PASS: 冻结任务、日志及运行凭证哈希、24 次输入、全部评分诊断字段、CSV 和汇总一致。
+首次运行代码状态：type='git' origin='https://github.com/Xxly959/office-agent-bench.git' commit='f6bf2ff' dirty=True
+注意：这是存档日志的离线复核；模型再次运行可能产生不同输出。

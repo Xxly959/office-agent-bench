@@ -3,7 +3,7 @@ import unittest
 from copy import deepcopy
 
 from inspect_ai.model import ModelName, ModelOutput
-from inspect_ai.scorer import CORRECT, INCORRECT, Score, Target
+from inspect_ai.scorer import Score, Target
 from inspect_ai.solver import TaskState
 
 from office_bench.task import _parse_output, office_scorer
@@ -36,7 +36,7 @@ class ScorerTests(unittest.IsolatedAsyncioTestCase):
                        format_violation=False, order_violation=False,
                        missing_count=0, extra_count=0, deadline_bad_format=False):
         metadata = result.metadata or {}
-        self.assertEqual(result.value, CORRECT if correct else INCORRECT)
+        self.assertEqual(result.value, 1 if correct else 0)
         expected = {
             "correct": correct, "failure_type": failures,
             "claimed_ok": claimed_ok, "false_completion": claimed_ok and not correct,
