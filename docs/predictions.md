@@ -42,3 +42,13 @@
 - 失败是集中在内容上，还是集中在格式上？
 
 结果出来后的分析另起一个文件，不得回头修改本文件。
+
+## 五、模型名称差异说明（运行后补记）
+
+- 追加日期：2026-10-14（Asia/Shanghai）；事实说明由 Codex 整理，待作者审阅。
+- 此节追加晚于 2026-10-13 的正式运行，不属于事前预测；上文保持原样。
+- 正式日志记录的是 `deepseek/deepseek-flash`，本项目未运行 `deepseek-chat`，不能据此比较两个名称的通过率。
+
+`deepseek-chat` 是历史 API 名称，不能无日期地把它当成固定模型。官方变更记录显示：2025-12-01 时，它指向 V3.2 的非思考模式；2026-04-24 后过渡期指向 V4-Flash 的非思考模式，并宣布于 2026-07-24 停用。2026-09-10 发布 V4.1-Flash 后，官方使用 `deepseek-flash` 调用它。来源：[DeepSeek 官方变更记录](https://api-docs.deepseek.com/updates/)。
+
+因此，模型名称与思考模式要分别记录，不能仅凭名称推断是同一模型、同一模式或有某种能力差距。此次日志有 6,980 个 reasoning tokens，但没有显式固定 temperature、max_tokens 或 thinking 参数；不能事后补写成当时已经固定。若要比较思考与非思考模式，应使用同一明确模型版本、分别固定模式，重新写预测后再运行。官方当前接口支持 `thinking` 控制：[Chat Completions API](https://api-docs.deepseek.com/api/create-chat-completion/)。
